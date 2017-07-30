@@ -15,19 +15,19 @@
         sref: '.dashboard'
       },
       {
+        name: 'Moradores',
+        icon: 'view_module',
+        sref: '.data-table'
+      },
+      {
         name: 'Profile',
         icon: 'person',
         sref: '.profile'
       },
       {
-        name: 'Table',
-        icon: 'view_module',
+        name: 'Settings',
+        icon: 'settings',
         sref: '.table'
-      },
-      {
-        name: 'Data Table',
-        icon: 'view_module',
-        sref: '.data-table'
       }
     ];
 

@@ -10,51 +10,59 @@
   function tableService($q){
     var tableData = [
       {
-        issue: 'Nested views',
+        issue: 'Ayris Raquel',
+        building: 'Bloco A',
         progress: 100,
-        status: 'Done',
+        status: 'Paid',
         class: 'md-accent'
       },
       {
-        issue: 'Table component',
+        issue: 'George Vidal',
+          building: 'Bloco A',
         progress: 40,
         status: 'Feedback',
         class: ''
       },
       {
-        issue: 'Dashboard tiles',
+        issue: 'Joeffison Andrade',
+          building: 'Bloco A',
         progress: 100,
         status: 'Done',
         class: 'md-accent'
       },
       {
-        issue: 'Panel widget',
+        issue: 'Fernando Silvério',
+          building: 'Bloco A',
         progress: 84,
-        status: 'In progress',
+        status: '2 months',
         class: 'orange'
       },
       {
-        issue: 'Form',
+        issue: 'Oscar Wilde',
+          building: 'Bloco A',
         progress: 100,
         status: 'Done',
         class: 'md-accent'
       },
       {
-        issue: 'Custom CSS',
+        issue: 'Dorian Gray',
+          building: 'Bloco A',
         progress: 20,
-        status: 'Feedback',
+        status: '4 months',
         class: ''
       },
       {
-        issue: 'Add backend',
+        issue: 'Lord Henry',
+          building: 'Bloco A',
         progress: 1,
-        status: 'To do',
+        status: 'Setor Juridico',
         class: 'md-warn'
       },
       {
-        issue: 'Layout with sidebar',
+        issue: 'John Landry',
+          building: 'Bloco A',
         progress: 100,
-        status: 'Done',
+        status: 'Paid',
         class: 'md-accent'
       }
     ];
@@ -72,13 +80,18 @@
        */
       loadByPagination: function (query) {
         query = query || {limit:10,page:1};
-         
+        var letter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'];
         var list = [];
         var start = (query.page-1)*query.limit;
         var end = start + query.limit;
         for (var i = start; i < end; i++) {
           var f = PickRandom();
-          f.id = i+1;
+          var b = Math.floor(i/16);
+          f.building = 'Bloco ' + letter[b];
+
+          var apto_id = i - b*16;
+          var floor = Math.floor(apto_id/4);
+          f.id = floor + '0' + (apto_id - floor*4 +1);
           list.push(f);
         }
         return $q.when({items:list,count:800});
